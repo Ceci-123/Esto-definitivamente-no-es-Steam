@@ -40,17 +40,19 @@ namespace Vista
                 if (codigoJuego > 0)
                 {
                     JuegoDao.Modificar(aux);
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     JuegoDao.Guardar(aux);
+                    DialogResult = DialogResult.OK;
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("ocurrio un error", "Guardado o modificacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DialogResult = DialogResult.Cancel;
             }
-            DialogResult = DialogResult.OK;
         }
     }
 }
