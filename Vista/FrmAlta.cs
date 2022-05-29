@@ -6,13 +6,14 @@ namespace Vista
 {
     public partial class FrmAlta : Form
     {
-        int codigoJuego = 0;
+        int codigoJuego;
         public FrmAlta(int codigoJuego) : this()
         {
             btnGuardar.Text = "Modificar";
             nupPrecio.Maximum = 10000;
-            PintarForm();
+            lblUsuarios.Text = string.Empty;
             this.codigoJuego = codigoJuego;
+            PintarForm();
         }
 
         private void PintarForm()
@@ -29,28 +30,39 @@ namespace Vista
 
         private void FrmAlta_Load(object sender, EventArgs e)
         {
-            cmbUsuarios.DataSource = UsuarioDao.Leer();
+            try
+            {
+                cmbUsuarios.DataSource = UsuarioDao.Leer();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         protected virtual void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                Juego aux = new Juego(Convert.ToInt32(this.cmbUsuarios.Text), this.txtNombre.Text, this.txtGenero.Text, Convert.ToDouble(this.nupPrecio.ToString()));
-                if (codigoJuego > 0)
+                if (btnGuardar.Text != "Modificar")
                 {
-                    JuegoDao.Modificar(aux);
-                    DialogResult = DialogResult.OK;
+                    Juego nuevoJuego = new Juego(((Usuario)cmbUsuarios.SelectedItem).CodigoUsuario, txtNombre.Text, txtGenero.Text, (double)nupPrecio.Value);
+
+                    JuegoDao.Guardar(nuevoJuego);
                 }
                 else
                 {
-                    JuegoDao.Guardar(aux);
-                    DialogResult = DialogResult.OK;
+                    Juego nuevoJuego = new Juego(codigoJuego,((Usuario)cmbUsuarios.SelectedItem).CodigoUsuario, txtNombre.Text, txtGenero.Text, (double)nupPrecio.Value);
+
+                    JuegoDao.Modificar(nuevoJuego);
                 }
+
+                DialogResult = DialogResult.OK;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("ocurrio un error", "Guardado o modificacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 DialogResult = DialogResult.Cancel;
             }
         }

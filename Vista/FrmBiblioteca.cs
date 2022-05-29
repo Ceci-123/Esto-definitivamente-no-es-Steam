@@ -20,63 +20,90 @@ namespace Vista
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RefrescarBiblioteca();
+            try
+            {
+                RefrescarBiblioteca();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void RefrescarBiblioteca()
         {
             dtgvBiblioteca.DataSource = JuegoDao.Leer();
-            dtgvBiblioteca.Update();
             dtgvBiblioteca.Refresh();
-            
+            dtgvBiblioteca.Update();
+
         }
 
 
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int aux = 0;
-            if (this.dtgvBiblioteca.SelectedRows.Count > 0)
+            try
             {
-                Juego auxJuego = ((Juego)dtgvBiblioteca.CurrentRow.DataBoundItem);
-                aux = auxJuego.CodigoJuego;
+                if (dtgvBiblioteca.SelectedRows.Count > 0)
+                {
+                    Biblioteca biblioteca = (Biblioteca)dtgvBiblioteca.CurrentRow.DataBoundItem;
+
+                    JuegoDao.Eliminar(biblioteca.CodigoJuego);
+                    RefrescarBiblioteca();
+                }
             }
-            JuegoDao.Eliminar(aux); 
-            RefrescarBiblioteca();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
-            FrmAlta frm = new FrmAlta();
-            frm.ShowDialog();
-            if (frm.DialogResult == DialogResult.OK)
+            try
             {
-              MessageBox.Show("Creado correctamente", "Creacion de juego", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FrmAlta frmAlta = new FrmAlta();
+
+                if (frmAlta.ShowDialog() == DialogResult.OK)
+                {
+                    RefrescarBiblioteca();
+                    MessageBox.Show("Creado correctamente", "Creacion de juego", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            RefrescarBiblioteca();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+ 
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            int aux = 0;
-            if (this.dtgvBiblioteca.SelectedRows.Count > 0)
+            try
             {
-              Juego auxJuego = ((Juego)dtgvBiblioteca.CurrentRow.DataBoundItem);
-              aux = auxJuego.CodigoJuego;
+                if (dtgvBiblioteca.SelectedRows.Count > 0)
+                {
+                    Biblioteca biblioteca = (Biblioteca)dtgvBiblioteca.CurrentRow.DataBoundItem;
+
+                    FrmAlta frmAlta = new FrmAlta(biblioteca.CodigoJuego);
+
+                    if (frmAlta.ShowDialog() == DialogResult.OK)
+                    {
+                        RefrescarBiblioteca();
+                    }
+                }
             }
-           
-            FrmAlta frm = new FrmAlta(aux);
-            frm.ShowDialog();
-            if (frm.DialogResult == DialogResult.OK)
+            catch (Exception ex)
             {
-              MessageBox.Show("Modificado correctamente", "Modificacion de juego", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            RefrescarBiblioteca();
+ 
         }
 
     }
