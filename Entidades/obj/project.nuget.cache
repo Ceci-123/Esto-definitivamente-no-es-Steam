@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iSW71D+gn54cMyRqo7M+ftL0aiqyScXH/Q26ct5Wrax11H7Srg4Yv1jtDnWc2Rq4vTxZp67PrFhKuxUaCyv2tg==",
+  "dgSpecHash": "MPnWVXqMuu/vVcgndfKPx9GrFXXBG5ccXJA3emK+8zAWcddxtINdFVRb9GyY+4510O0/3lSmO8l83KqALFAvQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

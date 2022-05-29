@@ -477,11 +477,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Vista\\Vista.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Vista\\Vista.csproj",
       "projectName": "Vista",
-      "projectPath": "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Vista\\Vista.csproj",
+      "projectPath": "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Vista\\Vista.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Vista\\obj\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Vista\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -498,8 +498,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Entidades\\Entidades.csproj"
+            "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Entidades\\Entidades.csproj"
             }
           }
         }

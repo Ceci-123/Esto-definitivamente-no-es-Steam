@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rtM3/OPMfb5WdHJnCfxU2mTEbAv/9QeRTj4HNCdTfMGbGCeD2JmFP8uCkQeRruGHm88H26zuvJkUH/A2WRJ9PA==",
+  "dgSpecHash": "m62nf2YbvRvRRInkNgr00hkkX5MZCnfm/PqOjWAhEYEgvbBT1ypRMRvS56/2VxYjuTKYC1LjtNdbQ9hL+dWxfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\visual solutions\\Esto definitivamente no es steam\\Vista\\Vista.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\steam\\Esto-definitivamente-no-es-Steam\\Vista\\Vista.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

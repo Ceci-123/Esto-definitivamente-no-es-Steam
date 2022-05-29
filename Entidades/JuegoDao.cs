@@ -23,10 +23,8 @@ namespace Entidades
         {
             try
             {
-                comando.Parameters.Clear();
                 conexion.Open();
-                comando.CommandText = $"DELETE FROM Juegos WHERE CODIGO_JUEGO ={codigoJuego}";
-                comando.Parameters.AddWithValue("@ID", codigoJuego);
+                comando.CommandText = $"DELETE FROM JUEGOS WHERE CODIGO_JUEGO ={codigoJuego}";
                 int rows = comando.ExecuteNonQuery();
 
             }
@@ -46,7 +44,7 @@ namespace Entidades
             {
                 comando.Parameters.Clear();
                 conexion.Open();
-                comando.CommandText = $"INSERT INTO Juegos (CODIGO_USUARIO,NOMBRE,PRECIO, GENERO) VALUES (@Codigo,@Nombre,@Precio,@Genero)";
+                comando.CommandText = $"INSERT INTO JUEGOS (CODIGO_USUARIO,NOMBRE,PRECIO, GENERO) VALUES (@Codigo,@Nombre,@Precio,@Genero)";
                 comando.Parameters.AddWithValue("@Codigo", unJuego.CodigoUsuario);
                 comando.Parameters.AddWithValue("@Nombre", unJuego.Nombre);
                 comando.Parameters.AddWithValue("@Precio", unJuego.Precio);
@@ -72,8 +70,9 @@ namespace Entidades
             {
                 conexion.Open();
                 comando.CommandText = "SELECT [CODIGO_JUEGO],[NOMBRE],[GENERO], [USERNAME]FROM[EJERCICIOS_UTN].[dbo].[JUEGOS] as ju JOIN USUARIOS as usu ON ju.CODIGO_USUARIO = usu.CODIGO_USUARIO";
-                //SELECT [CODIGO_JUEGO],[CODIGO_USUARIO],[NOMBRE],[PRECIO],[GENERO] FROM[EJERCICIOS_UTN].[dbo].[JUEGOS]
-
+ 
+                //"SELECT JUEGOS.NOMBRE as juego, JUEGOS.GENERO as genero, JUEGOS.CODIGO_JUEGO as codigoJuego, USUARIOS.USERNAME as usuario " +
+                //    $"FROM JUEGOS JOIN USUARIOS ON JUEGOS.CODIGO_USUARIO = USUARIOS.CODIGO_USUARIO"
                 using (SqlDataReader dataReader = comando.ExecuteReader())
                 {
                     while (dataReader.Read())
@@ -102,11 +101,9 @@ namespace Entidades
             Juego jueguito = null;
             try
             {
-                comando.Parameters.Clear();
                 conexion.Open();
-                comando.CommandText = $"SELECT * from JUEGOS where CODIGO_JUEGO = @ID";
-                comando.Parameters.AddWithValue("@ID", codigoJuego);
-
+                comando.CommandText = $"SELECT * from JUEGOS where CODIGO_JUEGO = {codigoJuego}";
+                
                 using (SqlDataReader dataReader = comando.ExecuteReader())
                 {
                     while (dataReader.Read())
@@ -134,11 +131,10 @@ namespace Entidades
             {
                 comando.Parameters.Clear();
                 conexion.Open();
-                comando.CommandText = $"UPDATE Juegos SET nombre = @Nombre, precio = @Precio, genero = @Genero where CODIGO_JUEGO = @ID";
+                comando.CommandText = $"UPDATE JUEGOS SET NOMBRE = @Nombre, PRECIO = @Precio, GENERO = @Genero where CODIGO_JUEGO ={juego.CodigoJuego}";
                 comando.Parameters.AddWithValue("@Nombre", juego.Nombre);
                 comando.Parameters.AddWithValue("@Precio", juego.Precio);
                 comando.Parameters.AddWithValue("@Genero", juego.Genero);
-                comando.Parameters.AddWithValue("@ID", juego.CodigoJuego);
                 int rows = comando.ExecuteNonQuery();
 
 

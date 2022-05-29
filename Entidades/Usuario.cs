@@ -18,10 +18,11 @@ namespace Entidades
         }
 
         public int CodigoUsuario { get => codigoUsuario; }
+        public string Username { get => username; }
 
         public override string ToString()
         {
-            return $"Nombre de usuario {this.username}";
+            return this.username;
         }
     }
 }
